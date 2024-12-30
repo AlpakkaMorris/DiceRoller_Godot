@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjbmev60vxj03"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_hhyam"]
+[ext_resource type="PackedScene" uid="uid://bsuo0mm2hbn2j" path="res://scenes/dice_button.tscn" id="2_uuhx2"]
+
+[node name="Main" type="Node2D"]
+position = Vector2(540, 1250)
+script = ExtResource("1_hhyam")
+
+[node name="Dice4Button" parent="." instance=ExtResource("2_uuhx2")]
+position = Vector2(-280, -1149)
+scale = Vector2(0.5, 0.5)
+
+[node name="Dice6Button" parent="." instance=ExtResource("2_uuhx2")]
+position = Vector2(-280, -1050)
+scale = Vector2(0.5, 0.5)
+
+[node name="Dice8Button" parent="." instance=ExtResource("2_uuhx2")]
+position = Vector2(-280, -946)
+scale = Vector2(0.5, 0.5)
+
+[node name="Dice10Button" parent="." instance=ExtResource("2_uuhx2")]
+position = Vector2(-280, -854)
+scale = Vector2(0.5, 0.5)
+
+[node name="Dice10pButton" parent="." instance=ExtResource("2_uuhx2")]
+position = Vector2(-280, -753)
+scale = Vector2(0.5, 0.5)
+
+[node name="Dice12Button" parent="." instance=ExtResource("2_uuhx2")]
+position = Vector2(-280, -656)
+scale = Vector2(0.5, 0.5)
+
+[node name="Dice20Button" parent="." instance=ExtResource("2_uuhx2")]
+position = Vector2(-280, -557)
+scale = Vector2(0.5, 0.5)
+
+[node name="RollButton" type="Button" parent="."]
+offset_left = -337.0
+offset_top = -452.0
+offset_right = -32.0
+offset_bottom = -344.0
+theme_override_font_sizes/font_size = 46
+text = "Roll Dice"
+
+[connection signal="pressed" from="RollButton" to="." method="_on_roll_button_pressed"]

@@ -1,0 +1,106 @@
+[gd_scene load_steps=9 format=3 uid="uid://cjbmev60vxj03"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_be1h6"]
+[ext_resource type="Texture2D" uid="uid://3jm6rmym0a84" path="res://resources/TheF1amethr0wer-artist-Worms-Игры-8633824.png" id="2_gmi16"]
+[ext_resource type="PackedScene" uid="uid://bsuo0mm2hbn2j" path="res://scenes/dice_button.tscn" id="2_uuhx2"]
+[ext_resource type="PackedScene" uid="uid://bc4m8kocilmc4" path="res://scenes/roll_button.tscn" id="3_7e604"]
+[ext_resource type="PackedScene" uid="uid://cf7qtpng7ls1o" path="res://scenes/output_window.tscn" id="3_8vceg"]
+[ext_resource type="PackedScene" uid="uid://dm1qltp3b630k" path="res://scenes/bonus_count.tscn" id="3_t83iu"]
+[ext_resource type="FontFile" uid="uid://cs3vnj2mxhwsh" path="res://resources/Comfortaa-Medium.ttf" id="6_i23ws"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_plgde"]
+font = ExtResource("6_i23ws")
+font_size = 110
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_be1h6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(0.489622, 0.489622, 0.489622, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gmi16")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -416.0
+offset_top = -713.0
+offset_right = 416.0
+offset_bottom = 713.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/separation = 40
+
+[node name="Dice4Button" parent="CanvasLayer/ScrollContainer/VBoxContainer" instance=ExtResource("2_uuhx2")]
+layout_mode = 2
+
+[node name="Dice6Button" parent="CanvasLayer/ScrollContainer/VBoxContainer" instance=ExtResource("2_uuhx2")]
+layout_mode = 2
+
+[node name="Dice8Button" parent="CanvasLayer/ScrollContainer/VBoxContainer" instance=ExtResource("2_uuhx2")]
+layout_mode = 2
+
+[node name="Dice10Button" parent="CanvasLayer/ScrollContainer/VBoxContainer" instance=ExtResource("2_uuhx2")]
+layout_mode = 2
+
+[node name="Dice10pButton" parent="CanvasLayer/ScrollContainer/VBoxContainer" instance=ExtResource("2_uuhx2")]
+layout_mode = 2
+
+[node name="Dice12Button" parent="CanvasLayer/ScrollContainer/VBoxContainer" instance=ExtResource("2_uuhx2")]
+layout_mode = 2
+
+[node name="Dice20Button" parent="CanvasLayer/ScrollContainer/VBoxContainer" instance=ExtResource("2_uuhx2")]
+layout_mode = 2
+
+[node name="BonusCount" parent="CanvasLayer/ScrollContainer/VBoxContainer" instance=ExtResource("3_t83iu")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -341.0
+offset_top = -909.5
+offset_right = 341.0
+offset_bottom = -786.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Dice Roller"
+label_settings = SubResource("LabelSettings_plgde")
+horizontal_alignment = 1
+
+[node name="RollButton" parent="CanvasLayer" instance=ExtResource("3_7e604")]
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -235.5
+offset_top = -334.0
+offset_right = 235.5
+offset_bottom = -245.0
+grow_vertical = 0
+
+[node name="OutputWindow" parent="." instance=ExtResource("3_8vceg")]
+
+[connection signal="pressed" from="CanvasLayer/ScrollContainer/VBoxContainer/BonusCount/minus1" to="." method="_on_minus_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/ScrollContainer/VBoxContainer/BonusCount/plus1" to="." method="_on_plus_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/RollButton" to="." method="_on_roll_button_pressed"]
+
+[editable path="CanvasLayer/ScrollContainer/VBoxContainer/BonusCount"]

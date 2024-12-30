@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsuo0mm2hbn2j"]
+
+[ext_resource type="Texture2D" uid="uid://bowuc70l4gffc" path="res://assets/d4.jpg" id="1_2aj81"]
+[ext_resource type="Script" path="res://scripts/dice_button.gd" id="1_oiu5h"]
+[ext_resource type="FontFile" uid="uid://cs3vnj2mxhwsh" path="res://resources/Comfortaa-Medium.ttf" id="2_v5h2j"]
+
+[node name="DiceButton" type="HBoxContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -406.0
+offset_top = -181.0
+offset_right = 406.0
+offset_bottom = 181.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+alignment = 1
+script = ExtResource("1_oiu5h")
+
+[node name="minus1" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.6
+theme_override_colors/font_hover_color = Color(0.91664, 0.91664, 0.91664, 1)
+theme_override_fonts/font = ExtResource("2_v5h2j")
+theme_override_font_sizes/font_size = 90
+text = "-1"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_2aj81")
+
+[node name="DiceCounterLabel" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -38.0
+offset_top = -68.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(25, 44.5)
+theme_override_colors/font_color = Color(0.813258, 0.813258, 0.813258, 1)
+theme_override_fonts/font = ExtResource("2_v5h2j")
+theme_override_font_sizes/font_size = 60
+text = "3"
+horizontal_alignment = 3
+vertical_alignment = 3
+
+[node name="plus1" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.6
+theme_override_fonts/font = ExtResource("2_v5h2j")
+theme_override_font_sizes/font_size = 90
+text = "+1"
+
+[connection signal="pressed" from="minus1" to="." method="_on_minus_1_pressed"]
+[connection signal="pressed" from="plus1" to="." method="_on_plus_1_pressed"]

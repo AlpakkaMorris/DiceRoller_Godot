@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjbmev60vxj03"]
+
+[ext_resource type="Script" path="res://scenes/main1.gd" id="1_o3xa0"]
+[ext_resource type="PackedScene" uid="uid://bsuo0mm2hbn2j" path="res://scenes/dice_button.tscn" id="2_uuhx2"]
+[ext_resource type="PackedScene" uid="uid://bc4m8kocilmc4" path="res://scenes/roll_button.tscn" id="3_7e604"]
+[ext_resource type="PackedScene" uid="uid://cf7qtpng7ls1o" path="res://scenes/output_window.tscn" id="3_8vceg"]
+[ext_resource type="PackedScene" uid="uid://dm1qltp3b630k" path="res://scenes/bonus_count.tscn" id="3_t83iu"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_o3xa0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -220.5
+offset_top = -500.0
+offset_right = 220.5
+offset_bottom = -216.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 70
+alignment = 1
+
+[node name="Dice4Button" parent="CanvasLayer/VBoxContainer" instance=ExtResource("2_uuhx2")]
+layout_mode = 2
+
+[node name="Dice6Button" parent="CanvasLayer/VBoxContainer" instance=ExtResource("2_uuhx2")]
+layout_mode = 2
+
+[node name="Dice8Button" parent="CanvasLayer/VBoxContainer" instance=ExtResource("2_uuhx2")]
+layout_mode = 2
+
+[node name="Dice10Button" parent="CanvasLayer/VBoxContainer" instance=ExtResource("2_uuhx2")]
+layout_mode = 2
+
+[node name="Dice10pButton" parent="CanvasLayer/VBoxContainer" instance=ExtResource("2_uuhx2")]
+layout_mode = 2
+
+[node name="Dice12Button" parent="CanvasLayer/VBoxContainer" instance=ExtResource("2_uuhx2")]
+layout_mode = 2
+
+[node name="Dice20Button" parent="CanvasLayer/VBoxContainer" instance=ExtResource("2_uuhx2")]
+layout_mode = 2
+
+[node name="BonusCount" parent="CanvasLayer/VBoxContainer" instance=ExtResource("3_t83iu")]
+layout_mode = 2
+
+[node name="RollButton" parent="CanvasLayer/VBoxContainer" instance=ExtResource("3_7e604")]
+layout_mode = 2
+
+[node name="OutputWindow" parent="." instance=ExtResource("3_8vceg")]
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/BonusCount/minus1" to="." method="_on_minus_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/BonusCount/plus1" to="." method="_on_plus_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/RollButton" to="." method="_on_roll_button_pressed"]
+
+[editable path="CanvasLayer/VBoxContainer/BonusCount"]
